@@ -9,10 +9,14 @@ export interface LoginDTO {
   password: string;
 }
 
+// alteração RegisterDto conforme padrão do backend
 export interface RegisterDTO {
-  name: string;
+  restaurantName: string;
+  cnpj: string;
+  endereco: string;
+  managerName: string;
   email: string;
-  password: string;
+  senha: string;
 }
 
 export interface User {
