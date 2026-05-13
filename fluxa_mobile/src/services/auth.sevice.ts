@@ -8,17 +8,20 @@ const authResponseSchema = z.object({
 
   user: z.object({
     id: z.string(),
-    name: z.string(),
+    nomeRestaurante: z.string(),
     email: z.string().email("Email inválido"),
     role: z.enum(UserRole),
     restaurantId: z.string(),
   }),
 });
-
+// padronização dos campos conforme backend
 const authRegisterSchema = z.object({
-  name: z.string().min(1, "O nome é obrigatório"),
+  restaurantName: z.string().min(1, "O nome é obrigatório"),
+  cnpj: z.string().max(20, "CNPJ inválido"),
+  endereco: z.string().min(1, "Endereço Inválido"),
+  nameManager: z.string().min(1, "O nome é obrigatório"),
   email: z.string().email("Email inválido"),
-  password: z.string().min(6, "A senha deve conter no mínimo 6 caracteres"),
+  senha: z.string().min(6, "A senha deve conter no mínimo 6 caracteres"),
 });
 
 export async function login(data: LoginDTO) {
